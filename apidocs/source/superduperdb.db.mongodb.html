@@ -373,8 +373,8 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="superduperdb.db.mongodb.artifacts.MongoArtifactStore.delete_artifact">
-<span class="sig-name descname"><span class="pre">delete_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/mongodb/artifacts.html#MongoArtifactStore.delete_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.delete_artifact" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="superduperdb.db.mongodb.artifacts.MongoArtifactStore.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/mongodb/artifacts.html#MongoArtifactStore.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.delete" title="Permalink to this definition">#</a></dt>
 <dd><p>Delete artifact from artifact store
 :param file_id: File id uses to identify artifact in store</p>
 </dd></dl>
@@ -384,6 +384,16 @@
 <span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/mongodb/artifacts.html#MongoArtifactStore.drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.drop" title="Permalink to this definition">#</a></dt>
 <dd><p>Drop the artifact store.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.mongodb.artifacts.MongoArtifactStore.load_bytes">
+<span class="sig-name descname"><span class="pre">load_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/mongodb/artifacts.html#MongoArtifactStore.load_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.load_bytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.mongodb.artifacts.MongoArtifactStore.save_artifact">
+<span class="sig-name descname"><span class="pre">save_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serialized</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/mongodb/artifacts.html#MongoArtifactStore.save_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.save_artifact" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -2210,8 +2220,10 @@ the update was made.</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-superduperdb.db.mongodb.artifacts">superduperdb.db.mongodb.artifacts module</a><ul>
 <li><a class="reference internal" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore"><code class="docutils literal notranslate"><span class="pre">MongoArtifactStore</span></code></a><ul>
-<li><a class="reference internal" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.delete_artifact"><code class="docutils literal notranslate"><span class="pre">MongoArtifactStore.delete_artifact()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.delete"><code class="docutils literal notranslate"><span class="pre">MongoArtifactStore.delete()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.drop"><code class="docutils literal notranslate"><span class="pre">MongoArtifactStore.drop()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.load_bytes"><code class="docutils literal notranslate"><span class="pre">MongoArtifactStore.load_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.mongodb.artifacts.MongoArtifactStore.save_artifact"><code class="docutils literal notranslate"><span class="pre">MongoArtifactStore.save_artifact()</span></code></a></li>
 </ul>
 </li>
 </ul>

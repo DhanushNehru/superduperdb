@@ -246,7 +246,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superduperdb.db.base.artifact.</span></span><span class="sig-name descname"><span class="pre">ArtifactStore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code>, <a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin" title="superduperdb.db.base.artifact.ArtifactStoreMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactStoreMixin</span></code></a></p>
 <p>Abstraction for storing large artifacts separately from primary data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -257,8 +257,8 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.create_artifact">
-<span class="sig-name descname"><span class="pre">create_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.create_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.create_artifact" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.create" title="Permalink to this definition">#</a></dt>
 <dd><p>Save serialized object in the artifact store.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -271,8 +271,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.delete_artifact">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.delete_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.delete_artifact" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.delete">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.delete" title="Permalink to this definition">#</a></dt>
 <dd><p>Delete artifact from artifact store
 :param file_id: File id uses to identify artifact in store</p>
 </dd></dl>
@@ -284,6 +284,21 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Recursively search through a tree for ArtifactDescs by an Artifact with
+that <cite>file_id</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> – A tree made up of dicts and lists</p></li>
+<li><p><strong>cache</strong> – A cache dictionary of Artifacts, keyed by file_id</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.load_artifact">
 <span class="sig-name descname"><span class="pre">load_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.load_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.load_artifact" title="Permalink to this definition">#</a></dt>
 <dd><p>Load artifact from artifact store, and deserialize.</p>
@@ -292,6 +307,144 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>file_id</strong> – Identifier of artifact in the store</p></li>
 <li><p><strong>serializer</strong> – Serializer to use for deserialization</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.load_bytes">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.load_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.load_bytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.load_from_cache">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_from_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.load_from_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.load_from_cache" title="Permalink to this definition">#</a></dt>
+<dd><p>Recursively search through a tree for ArtifactDescs by an Artifact with
+that <cite>file_id</cite> from given cache.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> – A tree made up of dicts and lists</p></li>
+<li><p><strong>cache</strong> – A cache dictionary of Artifacts, keyed by file_id</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.replace">
+<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serialized</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artifact_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.replace" title="Permalink to this definition">#</a></dt>
+<dd><p>Replace every Artifact in the given <code class="docutils literal notranslate"><span class="pre">object</span></code> serialized info with
+artifact lookup.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>serialized</strong> – Serialized component dict</p></li>
+<li><p><strong>artifact_info</strong> – A dictionary mapping hashes to [TBD]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artifacts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.artifact.Artifact" title="superduperdb.container.artifact.Artifact"><span class="pre">Artifact</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save list of artifacts and replace the artifacts with file reference
+:param artifacts: List of <code class="docutils literal notranslate"><span class="pre">Artifact</span></code> instances</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.save_artifact">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serialized</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.save_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.save_artifact" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStore.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="superduperdb.container.html#superduperdb.container.component.Component" title="superduperdb.container.component.Component"><span class="pre">Component</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStore.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStore.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update artifacts with the updated object in the artifact store.
+:param object: A <code class="docutils literal notranslate"><span class="pre">Component</span></code> instance
+:param metadata_info: Previous object info from metadata store</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superduperdb.db.base.artifact.</span></span><span class="sig-name descname"><span class="pre">ArtifactStoreMixin</span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin._infer_artifacts">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_infer_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin._infer_artifacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._infer_artifacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Yield all entries keyed with ‘file_id’ in a tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tree</strong> – A tree made up of dicts and lists</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin._load_artifacts">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_load_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.artifact.Artifact" title="superduperdb.container.artifact.Artifact"><span class="pre">Artifact</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin._load_artifacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._load_artifacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Replace ArtifactDesc dicts in a tree by Artifacts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin._load_artifacts_from_cache">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_load_artifacts_from_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.artifact.Artifact" title="superduperdb.container.artifact.Artifact"><span class="pre">Artifact</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin._load_artifacts_from_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._load_artifacts_from_cache" title="Permalink to this definition">#</a></dt>
+<dd><p>Replace ArtifactDesc dicts in a tree by Artifacts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin._replace_artifacts">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_replace_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin._replace_artifacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._replace_artifacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Replace every Artifact in a tree with hash of the value, looked up in Info</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> – A tree made up of dicts and lists</p></li>
+<li><p><strong>info</strong> – A dictionary mapping hashes to [TBD]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin.get_artifacts">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.artifact.Artifact" title="superduperdb.container.artifact.Artifact"><span class="pre">Artifact</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin.get_artifacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin.get_artifacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Yield all Artifacts in a tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tree</strong> – A tree made up of dicts and lists</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin.load_artifacts">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.artifact.Artifact" title="superduperdb.container.artifact.Artifact"><span class="pre">Artifact</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin.load_artifacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin.load_artifacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Replace ArtifactDesc dicts in a tree by Artifacts with a getter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> – A tree made up of dicts and lists</p></li>
+<li><p><strong>getter</strong> – A function that returns <cite>bytes</cite> given a file_id</p></li>
+<li><p><strong>cache</strong> – A dictionary caching artifacts by file_id</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.db.base.artifact.ArtifactStoreMixin.replace_artifacts_with_dict">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">replace_artifacts_with_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/db/base/artifact.html#ArtifactStoreMixin.replace_artifacts_with_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.artifact.ArtifactStoreMixin.replace_artifacts_with_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Replace every Artifact in a tree with an ArtifactDesc</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> – A tree made up of dicts and lists</p></li>
+<li><p><strong>info</strong> – A dictionary mapping artifacts to file_ids</p></li>
 </ul>
 </dd>
 </dl>
@@ -552,7 +705,7 @@ VectorDatabase</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="superduperdb.db.base.db.DB.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="superduperdb.container.html#superduperdb.container.component.Component" title="superduperdb.container.component.Component"><span class="pre">Component</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.job.Job" title="superduperdb.container.job.Job"><span class="pre">Job</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/db.html#DB.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.db.DB.add" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="superduperdb.container.html#superduperdb.container.component.Component" title="superduperdb.container.component.Component"><span class="pre">Component</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.component.Component" title="superduperdb.container.component.Component"><span class="pre">Component</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="superduperdb.container.html#superduperdb.container.job.Job" title="superduperdb.container.job.Job"><span class="pre">Job</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/db/base/db.html#DB.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.db.base.db.DB.add" title="Permalink to this definition">#</a></dt>
 <dd><p>Add functionality in the form of components. Components are stored in the
 configured artifact store, and linked to the primary db through
 the metadata.</p>
@@ -1609,10 +1762,27 @@ was inserted</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-superduperdb.db.base.artifact">superduperdb.db.base.artifact module</a><ul>
 <li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore"><code class="docutils literal notranslate"><span class="pre">ArtifactStore</span></code></a><ul>
-<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.create_artifact"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.create_artifact()</span></code></a></li>
-<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.delete_artifact"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.delete_artifact()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.create"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.create()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.delete"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.delete()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.drop"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.drop()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.load"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.load()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.load_artifact"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.load_artifact()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.load_bytes"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.load_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.load_from_cache"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.load_from_cache()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.replace"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.replace()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.save"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.save()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.save_artifact"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.save_artifact()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStore.update"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin</span></code></a><ul>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._infer_artifacts"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin._infer_artifacts()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._load_artifacts"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin._load_artifacts()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._load_artifacts_from_cache"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin._load_artifacts_from_cache()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin._replace_artifacts"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin._replace_artifacts()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin.get_artifacts"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin.get_artifacts()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin.load_artifacts"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin.load_artifacts()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.db.base.artifact.ArtifactStoreMixin.replace_artifacts_with_dict"><code class="docutils literal notranslate"><span class="pre">ArtifactStoreMixin.replace_artifacts_with_dict()</span></code></a></li>
 </ul>
 </li>
 </ul>
